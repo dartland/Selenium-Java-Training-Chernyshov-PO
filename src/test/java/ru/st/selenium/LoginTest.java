@@ -1,8 +1,9 @@
 package ru.st.selenium;
 
 import org.testng.annotations.*;
-import static org.junit.Assert.*;
 
+import static org.junit.Assert.*;
+import ru.st.selenium.model.Film;
 import ru.st.selenium.model.User;
 
 public class LoginTest extends ru.st.selenium.pages.TestBase {
@@ -33,8 +34,11 @@ public class LoginTest extends ru.st.selenium.pages.TestBase {
   @Test
   public void addNewFilmTestPositive() throws Exception {
 	  
-    User user = new User().setLogin("admin").setPassword("wrong");
-    //app.getNavigationHelper().gotoHomePage();
+    //User user = new User().setLogin("admin").setPassword("wrong");
+    app.getNavigationHelper().gotoHomePage();
+    
+    Film film = new Film().setTitle("Selenium 2.0 + Java").setYear("2013").setNotes("WebDriver"); 
+    app.getFilmHelper().create(film);
     // assertFalse(app.getUserHelper().isLoggedIn());
     //assertTrue(app.getUserHelper().isNotLoggedIn());
   }

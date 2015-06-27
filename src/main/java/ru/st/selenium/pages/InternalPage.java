@@ -18,7 +18,8 @@ public class InternalPage extends AnyPage {
     return this;
   }
   
-  @FindBy(css = "nav a[href = 'http://localhost/php4dvd/']")
+  //@FindBy(css = "nav a[href = 'http://localhost/php4dvd/']")
+  @FindBy(xpath = "//a[contains(text(),'Home')]")
   private WebElement homeLink;
   
   @FindBy(css = "nav a[href $= '?go=profile']")
