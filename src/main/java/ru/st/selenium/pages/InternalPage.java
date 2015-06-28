@@ -19,9 +19,6 @@ public class InternalPage extends AnyPage {
     return this;
   }
   
-  @FindBy(xpath = "//a[contains(text(),'Home')]")
-  private WebElement homeLink;
-  
   @FindBy(css = "nav a[href $= '?go=profile']")
   private WebElement userProfileLink;
 
@@ -31,14 +28,17 @@ public class InternalPage extends AnyPage {
   @FindBy(css = "nav a[href $= '?logout']")
   private WebElement logoutLink;
   
-
+  //@FindBy(xpath = "//a[contains(text(),'Home')]")
+  //@FindBy(linkText = "Home")
+  @FindBy(xpath = ".//*[@id='wrapper']/header/div/nav/ul/li[1]/a")
+  private WebElement homeLink;
   
 
   
   public HomePage clickHomeLink() {
 	homeLink.click();
 	return pages.homePage;
-	//return this;
+	
   }
   
   public UserProfilePage clickUserProfilePage() {

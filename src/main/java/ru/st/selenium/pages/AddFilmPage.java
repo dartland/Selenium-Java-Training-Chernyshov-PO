@@ -22,7 +22,11 @@ public class AddFilmPage extends InternalPage {
   @FindBy(name = "aka")
   private WebElement alsoKnownAs;
   
+  @FindBy(name = "submit")
+  private WebElement submitButton; 
+  
 
+  
  
   public String getFilmName() {
     return titleField.getAttribute("value");
@@ -60,4 +64,11 @@ public class AddFilmPage extends InternalPage {
     wait.until(presenceOfElementLocated(By.cssSelector("div.content h2")));
     return this;
   }
+
+  public void clickSubmitButton() {
+	
+	submitButton.click();
+  }
+  
+  
 }

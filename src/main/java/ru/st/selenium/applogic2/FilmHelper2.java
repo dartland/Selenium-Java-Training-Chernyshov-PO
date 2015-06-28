@@ -1,9 +1,15 @@
 package ru.st.selenium.applogic2;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
+
+import org.openqa.selenium.By;
 
 import ru.st.selenium.applogic.FilmHelper;
 import ru.st.selenium.model.Film;
+import ru.st.selenium.pages.AddFilmPage;
+import ru.st.selenium.pages.HomePage;
 
 public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 
@@ -13,10 +19,20 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 
   @Override
   public void create(Film film) {
-    
-	pages.homePage.ensurePageLoaded().clickMovieButton();  
-	//pages.internalPage.clickMovieButton();  
-	//Thread.sleep(5000);
+    //отправляемся на домашнюю старницу с фильмами
+	HomePage home = pages.internalPage.ensurePageLoaded()
+			.clickHomeLink()
+		    .ensurePageLoaded();
+	//нажали кнопку add movie и грузим страничку 
+	AddFilmPage addFilm = home.clickMovieButton().ensurePageLoaded();
+			addFilm.setFilmName(film.getTitle())
+			.setYear(film.getYear())
+			.setAlsoKnownAs(film.getNotes())
+			.clickSubmitButton();   
+	
+	assertEquals(film.getTitle()+" ("+film.getYear()+")"
+			, pages.filmContentPage.ensurePageLoaded().getFullFilmName());    
+	
   }
 
   @Override
