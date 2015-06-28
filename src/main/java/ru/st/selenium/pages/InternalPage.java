@@ -1,6 +1,7 @@
 package ru.st.selenium.pages;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,6 @@ public class InternalPage extends AnyPage {
     return this;
   }
   
-  //@FindBy(css = "nav a[href = 'http://localhost/php4dvd/']")
   @FindBy(xpath = "//a[contains(text(),'Home')]")
   private WebElement homeLink;
   
@@ -28,13 +28,21 @@ public class InternalPage extends AnyPage {
   @FindBy(css = "nav a[href $= '?go=users']")
   private WebElement userManagementLink;
 
-  //@FindBy(css = "nav a[onclick $= '?logout']")
   @FindBy(css = "nav a[href $= '?logout']")
   private WebElement logoutLink;
+  
+  @FindBy(xpath = "//img[@alt='Add movie']")
+  private WebElement addMovieButton;
+  
+  public AddFilmPage clickMovieButton() {
+	    addMovieButton.click();
+	    return pages.addFilmPage;
+	  } 
   
   public InternalPage clickHomeLink() {
 	    homeLink.click();
 	    return pages.internalPage;
+	    //return this;
 	  }
   
   public UserProfilePage clickUserProfilePage() {

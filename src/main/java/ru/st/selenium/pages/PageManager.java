@@ -2,13 +2,13 @@ package ru.st.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class PageManager {
 
   private WebDriver driver;
 
   public LoginPage loginPage;
+  public AddFilmPage addFilmPage;
   public InternalPage internalPage;
   public UserProfilePage userProfilePage;
   public UserManagementPage userManagementPage;
@@ -16,9 +16,11 @@ public class PageManager {
   public PageManager(WebDriver driver) {
     this.driver = driver;
     loginPage = initElements(new LoginPage(this));
+    addFilmPage = initElements(new AddFilmPage(this));
     internalPage = initElements(new InternalPage(this));
     userProfilePage = initElements(new UserProfilePage(this));
     userManagementPage = initElements(new UserManagementPage(this));
+    
   }
   
   private <T extends Page> T initElements(T page) {

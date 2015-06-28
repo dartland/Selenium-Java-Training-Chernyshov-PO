@@ -1,7 +1,5 @@
 package ru.st.selenium.applogic2;
 
-import org.openqa.selenium.By;
-
 import ru.st.selenium.applogic.NavigationHelper;
 
 public class NavigationHelper2 extends DriverBasedHelper implements NavigationHelper {
@@ -42,6 +40,7 @@ public class NavigationHelper2 extends DriverBasedHelper implements NavigationHe
   @Override
   public void gotoHomePage() {
     pages.internalPage.ensurePageLoaded().clickHomeLink();
+	//pages.internalPage.clickHomeLink();  
     //driver.findElement(By.cssSelector("nav a[href $= 'http://localhost/php4dvd/']"))
     //  .click();
     //openRelativeUrl("?go=users");

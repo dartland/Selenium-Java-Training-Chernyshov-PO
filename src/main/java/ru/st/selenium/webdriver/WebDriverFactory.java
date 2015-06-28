@@ -16,9 +16,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import ru.st.selenium.util.Browser;
-import ru.st.selenium.webdriver.AuthenticatedHtmlUnitDriver;
-
-import ru.st.selenium.util.Browser;
 
 /*
  * Factory to instantiate a WebDriver object. It returns an instance of the driver (local invocation) or an instance of RemoteWebDriver

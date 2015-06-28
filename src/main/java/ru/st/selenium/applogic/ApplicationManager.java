@@ -4,7 +4,7 @@ public interface ApplicationManager {
 
 	UserHelper getUserHelper();
 	FilmHelper getFilmHelper();
-  NavigationHelper getNavigationHelper();
+    NavigationHelper getNavigationHelper();
 
   void stop();
 

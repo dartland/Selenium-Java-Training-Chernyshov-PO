@@ -13,8 +13,10 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 
   @Override
   public void create(Film film) {
-    // TODO Auto-generated method stub
-
+    
+	pages.internalPage.ensurePageLoaded().clickMovieButton();  
+	//pages.internalPage.clickMovieButton();  
+	//Thread.sleep(5000);
   }
 
   @Override
