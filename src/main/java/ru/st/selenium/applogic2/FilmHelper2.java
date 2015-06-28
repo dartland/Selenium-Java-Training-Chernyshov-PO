@@ -14,7 +14,7 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   @Override
   public void create(Film film) {
     
-	pages.internalPage.ensurePageLoaded().clickMovieButton();  
+	pages.homePage.ensurePageLoaded().clickMovieButton();  
 	//pages.internalPage.clickMovieButton();  
 	//Thread.sleep(5000);
   }

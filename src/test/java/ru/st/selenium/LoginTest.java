@@ -35,15 +35,22 @@ public class LoginTest extends ru.st.selenium.pages.TestBase {
   }*/
   
   @Test
-  public void addNewFilmTestPositive() throws Exception {
+  public void gotoHomePage() throws Exception {
 	    
     app.getNavigationHelper().gotoHomePage();
     
-    Film film = new Film().setTitle("Selenium 2.0 + Java").setYear("2013").setNotes("WebDriver"); 
-    //app.getFilmHelper().create(film);
-    // assertFalse(app.getUserHelper().isLoggedIn());
-    //assertTrue(app.getUserHelper().isNotLoggedIn());
+
   }
-    
+
+  @Test
+  public void addFilm() throws Exception {
+	    
+   
+    Film film = new Film().setTitle("Selenium 2.0 + Java").setYear("2013").setNotes("WebDriver"); 
+    app.getFilmHelper().create(film);
+
+  }  
+  
+  
 
 }

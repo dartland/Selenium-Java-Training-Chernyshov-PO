@@ -31,19 +31,15 @@ public class InternalPage extends AnyPage {
   @FindBy(css = "nav a[href $= '?logout']")
   private WebElement logoutLink;
   
-  @FindBy(xpath = "//img[@alt='Add movie']")
-  private WebElement addMovieButton;
+
   
-  public AddFilmPage clickMovieButton() {
-	    addMovieButton.click();
-	    return pages.addFilmPage;
-	  } 
+
   
-  public InternalPage clickHomeLink() {
-	    homeLink.click();
-	    return pages.internalPage;
-	    //return this;
-	  }
+  public HomePage clickHomeLink() {
+	homeLink.click();
+	return pages.homePage;
+	//return this;
+  }
   
   public UserProfilePage clickUserProfilePage() {
     userProfileLink.click();
