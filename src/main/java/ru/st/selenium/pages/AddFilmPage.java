@@ -28,7 +28,7 @@ public class AddFilmPage extends InternalPage {
   @FindBy(xpath = ".//label[@for='year']")
   private WebElement labelErrorYear;
   
-  @FindBy(name = ".//label[@for='name']")
+  @FindBy(xpath = ".//label[@for='name']")
   private WebElement labelErrorName;
   
  

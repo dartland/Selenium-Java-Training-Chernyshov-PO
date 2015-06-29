@@ -5,6 +5,7 @@ import java.util.List;
 import ru.st.selenium.applogic.FilmHelper;
 import ru.st.selenium.model.Film;
 import ru.st.selenium.pages.AddFilmPage;
+import ru.st.selenium.pages.FilmContentPage;
 import ru.st.selenium.pages.HomePage;
 
 public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
@@ -25,9 +26,6 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 			.setYear(film.getYear())
 			.setAlsoKnownAs(film.getNotes())
 			.clickSubmitButton();   
-	
-	   
-	
   }
   
   @Override
@@ -52,11 +50,24 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
     
   }
   
+  @Override
+  public Film findFilm() {
+	//отправляемся на домашнюю старницу с фильмами
+/*		HomePage home = pages.internalPage.ensurePageLoaded()
+				.clickHomeLink()
+			    .ensurePageLoaded();
+		home.getFilmContent().ensurePageLoaded();*/
+		return new Film();
+  } 
   
   @Override
   public void delete(Film film) {
-    // TODO Auto-generated method stub
-
+	//отправляемся на домашнюю старницу с фильмами
+		HomePage home = pages.internalPage.ensurePageLoaded()
+				.clickHomeLink()
+			    .ensurePageLoaded();
+		FilmContentPage filmContent = home.getFilmContent().ensurePageLoaded();
+		filmContent.clickRemoveButton().ensurePageLoaded();
   }
 
   @Override

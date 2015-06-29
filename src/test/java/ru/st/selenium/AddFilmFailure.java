@@ -1,9 +1,10 @@
 package ru.st.selenium;
 
+import static org.junit.Assert.assertTrue;
+
 import org.testng.annotations.Test;
 
 import ru.st.selenium.model.Film;
-import static org.junit.Assert.assertTrue;
 
 public class AddFilmFailure extends ru.st.selenium.pages.TestBase {
 
