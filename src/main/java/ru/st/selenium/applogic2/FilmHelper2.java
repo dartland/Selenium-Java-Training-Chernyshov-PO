@@ -1,10 +1,6 @@
 package ru.st.selenium.applogic2;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
-import org.openqa.selenium.By;
 
 import ru.st.selenium.applogic.FilmHelper;
 import ru.st.selenium.model.Film;
@@ -30,11 +26,33 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 			.setAlsoKnownAs(film.getNotes())
 			.clickSubmitButton();   
 	
-	assertEquals(film.getTitle()+" ("+film.getYear()+")"
-			, pages.filmContentPage.ensurePageLoaded().getFullFilmName());    
+	   
 	
   }
-
+  
+  @Override
+  public boolean isFullFilmNameEquals(Film film) {
+	  
+	String FilmName = film.getTitle()+" ("+film.getYear()+")";   
+    return pages.filmContentPage.ensurePageLoaded().getFullFilmName().equals(FilmName);
+    
+  }
+  
+  @Override
+  public boolean isInputErrorYear() {
+ 
+    return pages.addFilmPage.ensurePageLoaded().DisplaedLablelErrorYear();
+    
+  }
+  
+  @Override
+  public boolean isInputErrorName() {
+ 
+    return pages.addFilmPage.ensurePageLoaded().DisplaedLablelErrorName();
+    
+  }
+  
+  
   @Override
   public void delete(Film film) {
     // TODO Auto-generated method stub

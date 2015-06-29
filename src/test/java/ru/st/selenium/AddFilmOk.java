@@ -19,15 +19,15 @@ public class AddFilmOk extends ru.st.selenium.pages.TestBase {
   }
  
   @Test
-  public void addFilm() throws Exception {
+  public void addFilmOk() throws Exception {
 	 
 	User user = new User().setLogin("admin").setPassword("admin");
 	app.getUserHelper().loginAs(user);  
 	
 	Film film = new Film().setTitle("Selenium 2.0 + Java").setYear("2013").setNotes("WebDriver"); 
 	app.getFilmHelper().create(film);
-
-	app.getUserHelper().logout();
+	assertTrue(app.getFilmHelper().isFullFilmNameEquals(film));
+	//app.getUserHelper().logout();
   }  
  
   

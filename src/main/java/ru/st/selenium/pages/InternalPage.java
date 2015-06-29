@@ -28,9 +28,9 @@ public class InternalPage extends AnyPage {
   @FindBy(css = "nav a[href $= '?logout']")
   private WebElement logoutLink;
   
-  //@FindBy(xpath = "//a[contains(text(),'Home')]")
+  @FindBy(xpath = "//a[contains(text(),'Home')]")
   //@FindBy(linkText = "Home")
-  @FindBy(xpath = ".//*[@id='wrapper']/header/div/nav/ul/li[1]/a")
+  //@FindBy(xpath = ".//*[@id='wrapper']/header/div/nav/ul/li[1]/a")
   private WebElement homeLink;
   
 

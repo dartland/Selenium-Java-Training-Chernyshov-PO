@@ -9,5 +9,8 @@ public interface FilmHelper {
 	void create(Film film);
 	void delete(Film film);
 	List<Film> search(String title);
+	boolean isFullFilmNameEquals(Film film);
+	boolean isInputErrorYear();
+	boolean isInputErrorName();
 
 }

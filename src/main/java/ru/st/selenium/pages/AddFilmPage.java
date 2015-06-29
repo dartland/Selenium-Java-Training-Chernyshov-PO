@@ -25,7 +25,11 @@ public class AddFilmPage extends InternalPage {
   @FindBy(name = "submit")
   private WebElement submitButton; 
   
-
+  @FindBy(xpath = ".//label[@for='year']")
+  private WebElement labelErrorYear;
+  
+  @FindBy(name = ".//label[@for='name']")
+  private WebElement labelErrorName;
   
  
   public String getFilmName() {
@@ -33,6 +37,7 @@ public class AddFilmPage extends InternalPage {
   }
 
   public AddFilmPage setFilmName(String text) {
+	  titleField.clear();
 	  titleField.sendKeys(text);
     return this;
   }
@@ -42,6 +47,7 @@ public class AddFilmPage extends InternalPage {
   }
 
   public AddFilmPage setYear(String text) {
+	  yearField.clear();
 	  yearField.sendKeys(text);
     return this;
   }
@@ -56,7 +62,21 @@ public class AddFilmPage extends InternalPage {
   }
 
 
+  public void clickSubmitButton() {
+		
+	submitButton.click();
+  }
 
+  public boolean DisplaedLablelErrorYear() {
+  
+	return labelErrorYear.isDisplayed();
+  }
+  
+  public boolean DisplaedLablelErrorName() {
+		
+	  return labelErrorName.isDisplayed();
+  } 
+  
 
   public AddFilmPage ensurePageLoaded() {
     super.ensurePageLoaded();
@@ -65,10 +85,6 @@ public class AddFilmPage extends InternalPage {
     return this;
   }
 
-  public void clickSubmitButton() {
-	
-	submitButton.click();
-  }
-  
+
   
 }
