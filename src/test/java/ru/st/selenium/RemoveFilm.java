@@ -1,5 +1,6 @@
 package ru.st.selenium;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import ru.st.selenium.model.Film;
@@ -10,9 +11,11 @@ public class RemoveFilm extends ru.st.selenium.pages.TestBase {
   @Test
   public void RemoveFilm() throws Exception {
 	
-	Film film = new Film();
+    Film film = new Film();
+	int SizeBeforDelete = app.getFilmHelper().getSizeOfFilmList();
 	app.getFilmHelper().delete(film);
-	//assertTrue(app.getFilmHelper().isFilmDelete());
+	int SizeAfterDelete = app.getFilmHelper().getSizeOfFilmList();
+	Assert.assertEquals((SizeBeforDelete-SizeAfterDelete),1);
 	Thread.sleep(6000);
 	
   }  

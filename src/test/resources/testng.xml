@@ -6,6 +6,7 @@
 		<classes>
 		    <class name="ru.st.selenium.AddFilmOk"/>
 		    <class name="ru.st.selenium.AddFilmFailure"/>
+		    <class name="ru.st.selenium.RemoveFilm"/>
 		</classes>
 	</test>  
 </suite>

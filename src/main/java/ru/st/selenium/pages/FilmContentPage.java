@@ -1,5 +1,6 @@
 package ru.st.selenium.pages;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import org.openqa.selenium.By;
@@ -23,9 +24,11 @@ public class FilmContentPage extends InternalPage {
   private WebElement fullFilmName; 
   
   
-  public void clickSubmitButton() {
+  public HomePage clickRemoveButton() {
 		
 	  removeButton.click();
+	  wait.until(alertIsPresent()).accept();
+	  return pages.homePage; 
   }
     
  

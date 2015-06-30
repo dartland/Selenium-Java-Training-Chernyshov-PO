@@ -24,6 +24,7 @@ public abstract class Page {
 	  this.pages = pages;
     driver = pages.getWebDriver();
     wait= new WebDriverWait(driver, 10); 
+    driver.manage().window().maximize();
 	}
 
 	public WebDriver getWebDriver() {

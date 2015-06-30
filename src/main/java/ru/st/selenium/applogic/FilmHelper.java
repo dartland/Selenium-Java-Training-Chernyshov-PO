@@ -12,5 +12,6 @@ public interface FilmHelper {
 	boolean isFullFilmNameEquals(Film film);
 	boolean isInputErrorYear();
 	boolean isInputErrorName();
+	int getSizeOfFilmList();
 
 }

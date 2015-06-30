@@ -46,4 +46,10 @@ public class HomePage extends InternalPage {
     //wait.until(presenceOfElementLocated(By.cssSelector("div.content h2")));
     return this;
   }
+
+  public int getSize() {
+	 List<WebElement> Films = filmContainer.findElements(By.tagName("a"));
+	 return Films.size();
+  }
+  
 }

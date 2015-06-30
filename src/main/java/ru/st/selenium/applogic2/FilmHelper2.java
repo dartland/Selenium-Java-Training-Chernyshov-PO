@@ -50,16 +50,13 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
     
   }
   
-  @Override
-  public Film findFilm() {
-	//отправляемся на домашнюю старницу с фильмами
-/*		HomePage home = pages.internalPage.ensurePageLoaded()
-				.clickHomeLink()
-			    .ensurePageLoaded();
-		home.getFilmContent().ensurePageLoaded();*/
-		return new Film();
-  } 
+  public int getSizeOfFilmList() {
+
+	  
+	  return pages.homePage.getSize(); 
+  }
   
+ 
   @Override
   public void delete(Film film) {
 	//отправляемся на домашнюю старницу с фильмами
