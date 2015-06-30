@@ -29,6 +29,14 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   }
   
   @Override
+  public boolean isEmptySearchResult(String stringText) {
+	
+	  
+    return pages.homePage.ensurePageLoaded().getEmptySearchText().equals(stringText);
+    
+  } 
+  
+  @Override
   public boolean isFullFilmNameEquals(Film film) {
 	  
 	String FilmName = film.getTitle()+" ("+film.getYear()+")";   
@@ -52,7 +60,6 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   
   public int getSizeOfFilmList() {
 
-	  
 	  return pages.homePage.getSize(); 
   }
   
@@ -69,7 +76,9 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 
   @Override
   public List<Film> search(String title) {
-    // TODO Auto-generated method stub
+    
+	pages.homePage.ensurePageLoaded();  
+	  
     return null;
   }
 

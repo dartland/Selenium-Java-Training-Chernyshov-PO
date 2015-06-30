@@ -1,10 +1,12 @@
 package ru.st.selenium.pages;
 
+import static org.junit.Assert.fail;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,8 +23,40 @@ public class HomePage extends InternalPage {
   @FindBy(id = "results")
   private WebElement filmContainer; 
   
+  @FindBy(id = "q")
+  private WebElement searchField;  
+  
+  @FindBy(css = "div.content")
+  private WebElement noMoviesWhereFound;  
+  
+  
 //  @FindBy(tagName = "a")
 //  private WebElement filmList;
+  
+  public String getEmptySearchText() {
+	 
+	 //возможно стоит добавить ожидание видимости 
+	 return noMoviesWhereFound.getText(); 
+	  
+  }
+  
+  
+  
+  public HomePage setSearchFieldAndPressEnterButton(String searchString) {
+	    searchField.clear();
+	    searchField.sendKeys("searchString"+Keys.RETURN);
+	    	    
+	    
+	    return pages.homePage;
+	  } 
+  
+  public HomePage setSearchFieldAndPressEnterButton2(String searchString) {
+	    searchField.clear();
+	    searchField.sendKeys("searchString"+Keys.RETURN);
+
+	    
+	    return pages.homePage;
+	  } 
  
   public AddFilmPage clickMovieButton() {
 	    addMovieButton.click();

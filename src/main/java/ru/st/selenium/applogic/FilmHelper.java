@@ -13,5 +13,6 @@ public interface FilmHelper {
 	boolean isInputErrorYear();
 	boolean isInputErrorName();
 	int getSizeOfFilmList();
+	boolean isEmptySearchResult(String string);
 
 }
