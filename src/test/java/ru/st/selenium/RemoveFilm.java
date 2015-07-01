@@ -16,11 +16,9 @@ public class RemoveFilm extends ru.st.selenium.pages.TestBase {
 	app.getFilmHelper().delete(film);
 	int SizeAfterDelete = app.getFilmHelper().getSizeOfFilmList();
 	Assert.assertEquals((SizeBeforDelete-SizeAfterDelete),1);
-	Thread.sleep(6000);
+	
 	
   }  
  
-  
-  
 
 }

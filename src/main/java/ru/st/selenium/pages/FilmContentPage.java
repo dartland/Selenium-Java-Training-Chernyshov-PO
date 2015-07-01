@@ -43,7 +43,7 @@ public class FilmContentPage extends InternalPage {
 
   public FilmContentPage ensurePageLoaded() {
     super.ensurePageLoaded();
-    wait.until(presenceOfElementLocated(By.xpath("//img[@alt='Visit IMDb']")));
+    wait.until(presenceOfElementLocated(By.xpath("//img[@alt='Own']")));
     wait.until(presenceOfElementLocated(By.cssSelector("div.content h2")));
     return this;
   }

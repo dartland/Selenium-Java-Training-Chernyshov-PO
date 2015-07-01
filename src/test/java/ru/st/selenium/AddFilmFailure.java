@@ -2,13 +2,14 @@ package ru.st.selenium;
 
 import static org.junit.Assert.assertTrue;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ru.st.selenium.model.Film;
 
 public class AddFilmFailure extends ru.st.selenium.pages.TestBase {
 
- 
+
   @Test
   public void AddFilmFailure() throws Exception {
 	

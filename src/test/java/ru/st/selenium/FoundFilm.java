@@ -12,19 +12,19 @@ import org.testng.annotations.Test;
 import ru.st.selenium.model.Film;
 import ru.st.selenium.model.User;
 
-public class NotFoundFilm extends ru.st.selenium.pages.TestBase {
+public class FoundFilm extends ru.st.selenium.pages.TestBase {
 
 
  
   @Test
-  public void NotFoundFilm() throws Exception {
+  public void FoundFilm() throws Exception {
 	 
 	List<Film> FilmList;
 	
-	app.getFilmHelper().searchNull("Kadabra");
-	assertTrue(app.getFilmHelper().isEmptySearchResult("No movies where found."));
+	FilmList = app.getFilmHelper().search("Selen");
+	//assertTrue(app.getFilmHelper().isEmptySearchResult("No movies where found."));
 	
-	
+	Thread.sleep(6000);
 	
   }  
  

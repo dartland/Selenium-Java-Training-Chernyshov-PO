@@ -15,6 +15,19 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   }
 
   @Override
+  public List<Film> search(String title) {
+	  
+	  return pages.homePage.ensureFilmsLoaded(title);
+  }
+  
+  @Override
+  public void searchNull(String title) {
+    
+	pages.homePage.ensurePageLoaded().setSearchFieldAndPressEnterButton(title);
+	
+  }
+  
+  @Override
   public void create(Film film) {
     //отправляемся на домашнюю старницу с фильмами
 	HomePage home = pages.internalPage.ensurePageLoaded()
@@ -30,36 +43,26 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   
   @Override
   public boolean isEmptySearchResult(String stringText) {
-	
-	  
     return pages.homePage.ensurePageLoaded().getEmptySearchText().equals(stringText);
-    
   } 
   
   @Override
   public boolean isFullFilmNameEquals(Film film) {
-	  
 	String FilmName = film.getTitle()+" ("+film.getYear()+")";   
     return pages.filmContentPage.ensurePageLoaded().getFullFilmName().equals(FilmName);
-    
   }
   
   @Override
   public boolean isInputErrorYear() {
- 
-    return pages.addFilmPage.ensurePageLoaded().DisplaedLablelErrorYear();
-    
-  }
+     return pages.addFilmPage.ensurePageLoaded().DisplaedLablelErrorYear();
+   }
   
   @Override
   public boolean isInputErrorName() {
- 
-    return pages.addFilmPage.ensurePageLoaded().DisplaedLablelErrorName();
-    
-  }
+     return pages.addFilmPage.ensurePageLoaded().DisplaedLablelErrorName();
+   }
   
   public int getSizeOfFilmList() {
-
 	  return pages.homePage.getSize(); 
   }
   
@@ -67,19 +70,13 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   @Override
   public void delete(Film film) {
 	//отправляемся на домашнюю старницу с фильмами
-		HomePage home = pages.internalPage.ensurePageLoaded()
-				.clickHomeLink()
-			    .ensurePageLoaded();
-		FilmContentPage filmContent = home.getFilmContent().ensurePageLoaded();
-		filmContent.clickRemoveButton().ensurePageLoaded();
+	HomePage home = pages.internalPage.ensurePageLoaded()
+			.clickHomeLink()
+		    .ensurePageLoaded();
+	FilmContentPage filmContent = home.getFilmContent().ensurePageLoaded();
+	filmContent.clickRemoveButton().ensurePageLoaded();
   }
 
-  @Override
-  public List<Film> search(String title) {
-    
-	pages.homePage.ensurePageLoaded();  
-	  
-    return null;
-  }
+
 
 }
