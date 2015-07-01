@@ -15,6 +15,14 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   }
 
   @Override
+  public boolean isSearchResultAs(List<Film> filmList, String searchString) {
+  
+
+	  return pages.homePage.isSearchResultAs(filmList,searchString);
+  }
+  
+  
+  @Override
   public List<Film> search(String title) {
 	  
 	  return pages.homePage.ensureFilmsLoaded(title);

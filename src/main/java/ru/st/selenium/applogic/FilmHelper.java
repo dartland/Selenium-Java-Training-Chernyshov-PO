@@ -15,5 +15,6 @@ public interface FilmHelper {
 	int getSizeOfFilmList();
 	boolean isEmptySearchResult(String string);
 	void searchNull(String title);
+	boolean isSearchResultAs(List<Film> filmList, String string);
 
 }

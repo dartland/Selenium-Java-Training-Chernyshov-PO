@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -44,8 +45,9 @@ public class HomePage extends InternalPage {
   private List<WebElement> filmList;
   
   public List<Film> ensureFilmsLoaded(String title) {
-      
-	  Film film = new Film();
+	  
+	  List<Film> movieList = new ArrayList<Film>();
+	  
 	  System.out.println(filmList.size());
 	  searchField.clear(); searchField.sendKeys(title+Keys.RETURN);
 	  // ожидание исчезновения списка
@@ -68,16 +70,15 @@ public class HomePage extends InternalPage {
       for (int i = 0; i < filmList.size(); i++) {
 		WebElement film_cell = filmList.get(i);
 		NameFilm = film_cell.findElement(By.className("title")).getText();
-		System.out.println("Имя фильма ="+NameFilm);
+		System.out.println("film name ="+NameFilm);
 		//теперь заполним отсюда список film
+		Film film = new Film().setTitle(NameFilm);
+		movieList.add(i, film);
+		System.out.println("film name ="+film.getTitle());
 	  }
 	  
-	  //filmList.get(0).click();
-	  
-
-
-
-   return null;
+    return movieList;
+    
   }
 
   
@@ -130,6 +131,22 @@ public class HomePage extends InternalPage {
     //wait.until(presenceOfElementLocated(By.cssSelector("div.content h2")));
     return this;
   }
+
+
+public boolean isSearchResultAs(List<Film> filmsList, String searchString) {
+	
+	boolean isAs = true; 
+	// ежели, хоть один фильм не содержит вхождения строки поиска, возвращаем false
+    for (int i = 0; i < filmsList.size(); i++) {
+		
+    	CharSequence cs1 = searchString;
+		if (filmsList.get(i).getTitle().toLowerCase().contains(cs1) == false) 
+			isAs = false;
+		
+	  }
+	
+	return isAs;
+}
 
 
 
