@@ -21,7 +21,8 @@ public class FoundFilm extends ru.st.selenium.pages.TestBase {
 	 
 	List<Film> FilmList;
 	
-	FilmList = app.getFilmHelper().search("Selen");
+	
+	FilmList = app.getFilmHelper().search("Best");
 	//assertTrue(app.getFilmHelper().isEmptySearchResult("No movies where found."));
 	
 	Thread.sleep(6000);

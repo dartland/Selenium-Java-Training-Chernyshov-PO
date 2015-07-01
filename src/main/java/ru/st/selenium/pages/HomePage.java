@@ -12,8 +12,10 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import ru.st.selenium.model.Film;
 
@@ -26,71 +28,58 @@ public class HomePage extends InternalPage {
 	
   @FindBy(xpath = "//img[@alt='Add movie']")
   private WebElement addMovieButton;
-  
-  @FindBy(id = "results")
-  private WebElement filmContainer; 
-  
+ 
   @FindBy(id = "q")
   private WebElement searchField;  
   
   @FindBy(css = "div.content")
   private WebElement noMoviesWhereFound;  
   
+  @FindBy(id = "results")
+  private WebElement filmContainer;  
   
-//  @FindBy(tagName = "a")
-//  private WebElement filmList;
+  
+  @FindBys({@FindBy(id = "results"),
+      @FindBy(tagName = "a")})
+  private List<WebElement> filmList;
   
   public List<Film> ensureFilmsLoaded(String title) {
       
-	  //Film film = new Film();
-  /*  WebElement FilmContainerOld = driver.findElement(By.id("results"));
-      List<WebElement> FilmsOld = FilmContainerOld.findElements(By.tagName("a"));
-      searchField.clear(); searchField.sendKeys(title+Keys.RETURN);
-      for (int count = 0;; count ++) {
-    	    if (count >= 30)
-    	        throw new TimeoutException();
-    	    try {
-    	    	driver.manage().timeouts(). implicitlyWait(0, TimeUnit.SECONDS); 
-    	    	FilmsOld.get(0).getText();
-    	        
-    	    } catch (StaleElementReferenceException e) 
-    	    	{  break; }
-    	    Thread.sleep(1000);
-      }
-           
-      driver.manage().timeouts(). implicitlyWait(30, TimeUnit.SECONDS); 
-	  WebDriverWait wait = new WebDriverWait(driver, 30);
-	  //этот элемент тоже исчезает и появляется, ждем его появления
-	  wait.until(ExpectedConditions.presenceOfElementLocated(By.id("results")));
-	  WebElement FilmContainerNew = driver.findElement(By.id("results"));
-      for (int count = 0;; count ++) {
-  	    if (count >= 30) { throw new TimeoutException();}
-  	    List<WebElement> films = FilmContainerNew.findElements(By.tagName("a")); 
-  	    if (films.size()>0) {break;}
-  	    //Thread.sleep(1000);
-  	  }
-      
-  		
-  	  */
-	  System.out.println("***********************************");
+	  Film film = new Film();
+	  System.out.println(filmList.size());
 	  searchField.clear(); searchField.sendKeys(title+Keys.RETURN);
-	  String NameFilm;
-	  wait.until(ExpectedConditions.presenceOfElementLocated(By.id("results")));
-	  WebElement FilmContainerNew = driver.findElement(By.id("results"));
-      List<WebElement> films = FilmContainerNew.findElements(By.tagName("a")); 
-      for (int i = 0; i < films.size(); i++) {
- 
-    	  
-    	WebElement film_cell = films.get(i);
-    	//NameFilm = film_cell.findElement(By.className("title")).getText();
-    	System.out.println("Имя фильма ="+film_cell.getText());		
-  		 //film.setNotes(films.get(i).getAttribute(arg0));
-      }
-      
+	  // ожидание исчезновения списка
+	  for (int count = 0;; count ++) {
+  	    if (count >= 300)
+  	        throw new TimeoutException();
+	  try {
+	    	driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS); 
+	    	filmList.get(0).getText();
+	        
+	    } catch (StaleElementReferenceException e) 
+	  		{break;}
+  
+	  }
+	  // конец ожидания исчезновения списка
+	  System.out.println(filmList.size());
+	  
+      String NameFilm;
+
+      for (int i = 0; i < filmList.size(); i++) {
+		WebElement film_cell = filmList.get(i);
+		NameFilm = film_cell.findElement(By.className("title")).getText();
+		System.out.println("Имя фильма ="+NameFilm);
+		//теперь заполним отсюда список film
+	  }
+	  
+	  //filmList.get(0).click();
+	  
+
+
+
    return null;
   }
 
-  
   
   public String getEmptySearchText() {
 	 

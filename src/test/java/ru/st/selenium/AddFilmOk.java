@@ -24,7 +24,7 @@ public class AddFilmOk extends ru.st.selenium.pages.TestBase {
 	User user = new User().setLogin("admin").setPassword("admin");
 	app.getUserHelper().loginAs(user);  
 	
-	Film film = new Film().setTitle("Selenium 2.0 + Java").setYear("2013").setNotes("WebDriver"); 
+	Film film = new Film().setTitle("The best movie").setYear("2015").setNotes("WebDriver"); 
 	app.getFilmHelper().create(film);
 	assertTrue(app.getFilmHelper().isFullFilmNameEquals(film));
 	//app.getUserHelper().logout();
