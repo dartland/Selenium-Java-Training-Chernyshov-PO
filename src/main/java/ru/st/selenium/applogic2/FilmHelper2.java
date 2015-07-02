@@ -20,6 +20,7 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   
 
 	  return pages.homePage.isSearchResultAs(filmList,searchString);
+	  //return true;
   }
   
   
@@ -82,7 +83,7 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
 	HomePage home = pages.internalPage.ensurePageLoaded()
 			.clickHomeLink()
 		    .ensurePageLoaded();
-	FilmContentPage filmContent = home.getFilmContent().ensurePageLoaded();
+	FilmContentPage filmContent = home.getFilmContent(film.getTitle()).ensurePageLoaded();
 	filmContent.clickRemoveButton().ensurePageLoaded();
   }
 

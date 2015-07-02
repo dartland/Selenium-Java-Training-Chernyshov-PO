@@ -22,17 +22,16 @@ public class FoundFilm extends ru.st.selenium.pages.TestBase {
 	 
 	ArrayList<Film> filmList = new ArrayList<Film>();
 
-	User user = new User().setLogin("admin").setPassword("admin");
-	app.getUserHelper().loginAs(user);  
+	//User user = new User().setLogin("admin").setPassword("admin");
+	//app.getUserHelper().loginAs(user);  
 	
 	filmList = app.getFilmHelper().search("Best");
-	System.out.println(filmList.size());
-	//assertTrue(app.getFilmHelper().isSearchResultAs(filmList,"Best"));
+	//System.out.println(filmList.size());
+	assertTrue(app.getFilmHelper().isSearchResultAs(filmList,"Best"));
 
 	
   }  
  
-  
   
 
 }

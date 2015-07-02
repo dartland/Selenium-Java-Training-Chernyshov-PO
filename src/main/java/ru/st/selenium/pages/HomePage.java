@@ -51,10 +51,10 @@ public class HomePage extends InternalPage {
 		// ежели, хоть один фильм не содержит вхождения строки поиска, возвращаем false
 	    for (int i = 0; i < filmModelList.size(); i++) {
 			
-	    	CharSequence cs1 = searchString;
+	    	CharSequence cs1 = searchString.toLowerCase();
 			if (filmModelList.get(i).getTitle().toLowerCase().contains(cs1) == false) 
-				isAs = false;
-			
+				{isAs = false;}
+	    	//System.out.println(filmModelList.get(i).getTitle().toLowerCase().contains(cs1));
 		  }
 		
 		return isAs;
@@ -63,8 +63,10 @@ public class HomePage extends InternalPage {
   public ArrayList<Film> ensureFilmsLoaded(String title) {
 	  
 	  ArrayList<Film> movieList = new ArrayList<Film>();
-	  
+	  //searchField.clear(); searchField.sendKeys(""+Keys.RETURN);
+	  setSearchFieldAndPressEnterButton("");
 	  System.out.println(filmList.size());
+	  //setSearchFieldAndPressEnterButton(title);
 	  searchField.clear(); searchField.sendKeys(title+Keys.RETURN);
 	  
 
@@ -83,13 +85,14 @@ public class HomePage extends InternalPage {
       String NameFilm;
 
       for (int i = 0; i < filmList.size(); i++) {
+    	  
 		WebElement film_cell = filmList.get(i);
 		NameFilm = film_cell.findElement(By.className("title")).getText();
-		System.out.println("film name ="+NameFilm);
+		//System.out.println("film name ="+NameFilm);
 		//теперь заполним отсюда список film
 		Film film = new Film().setTitle(NameFilm);
 		movieList.add(i, film);
-		System.out.println("film name ="+film.getTitle());
+		//System.out.println("film name ="+film.getTitle());
 	  }
 	  
     return movieList;
@@ -113,19 +116,13 @@ public class HomePage extends InternalPage {
 	    return pages.homePage;
 	  } 
   
-  public HomePage setSearchFieldAndPressEnterButton2(String searchString) {
-	    searchField.clear();
-	    searchField.sendKeys("searchString"+Keys.RETURN);
-	    
-	    return pages.homePage;
-	  } 
  
   public AddFilmPage clickMovieButton() {
 	    addMovieButton.click();
 	    return pages.addFilmPage;
 	  }   
   
-  public FilmContentPage getFilmContent() {
+  public FilmContentPage getFilmContent(String nameFilm) {
 	    
 	  List<WebElement> Films = filmContainer.findElements(By.tagName("a"));
 	  int FilmsSize = Films.size();
