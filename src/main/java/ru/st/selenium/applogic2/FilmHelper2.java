@@ -1,5 +1,6 @@
 package ru.st.selenium.applogic2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.st.selenium.applogic.FilmHelper;
@@ -15,7 +16,7 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   }
 
   @Override
-  public boolean isSearchResultAs(List<Film> filmList, String searchString) {
+  public boolean isSearchResultAs(ArrayList<Film> filmList, String searchString) {
   
 
 	  return pages.homePage.isSearchResultAs(filmList,searchString);
@@ -23,7 +24,7 @@ public class FilmHelper2 extends DriverBasedHelper implements FilmHelper {
   
   
   @Override
-  public List<Film> search(String title) {
+  public ArrayList<Film> search(String title) {
 	  
 	  return pages.homePage.ensureFilmsLoaded(title);
   }

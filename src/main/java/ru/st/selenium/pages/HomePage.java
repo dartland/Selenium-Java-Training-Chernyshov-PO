@@ -44,25 +44,40 @@ public class HomePage extends InternalPage {
       @FindBy(tagName = "a")})
   private List<WebElement> filmList;
   
-  public List<Film> ensureFilmsLoaded(String title) {
+    
+  public boolean isSearchResultAs(ArrayList<Film> filmModelList, String searchString) {
+		
+		boolean isAs = true; 
+		// ежели, хоть один фильм не содержит вхождения строки поиска, возвращаем false
+	    for (int i = 0; i < filmModelList.size(); i++) {
+			
+	    	CharSequence cs1 = searchString;
+			if (filmModelList.get(i).getTitle().toLowerCase().contains(cs1) == false) 
+				isAs = false;
+			
+		  }
+		
+		return isAs;
+	}
+  
+  public ArrayList<Film> ensureFilmsLoaded(String title) {
 	  
-	  List<Film> movieList = new ArrayList<Film>();
+	  ArrayList<Film> movieList = new ArrayList<Film>();
 	  
 	  System.out.println(filmList.size());
 	  searchField.clear(); searchField.sendKeys(title+Keys.RETURN);
+	  
+
 	  // ожидание исчезновения списка
 	  for (int count = 0;; count ++) {
-  	    if (count >= 300)
+  	    if (count >= 30)
   	        throw new TimeoutException();
 	  try {
-	    	driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS); 
-	    	filmList.get(0).getText();
-	        
+		    filmList.size();
 	    } catch (StaleElementReferenceException e) 
 	  		{break;}
-  
 	  }
-	  // конец ожидания исчезновения списка
+
 	  System.out.println(filmList.size());
 	  
       String NameFilm;
@@ -78,6 +93,7 @@ public class HomePage extends InternalPage {
 	  }
 	  
     return movieList;
+    //  return null;
     
   }
 
@@ -114,7 +130,7 @@ public class HomePage extends InternalPage {
 	  List<WebElement> Films = filmContainer.findElements(By.tagName("a"));
 	  int FilmsSize = Films.size();
 	  if(FilmsSize>0) {
-		Films.get(2).click();
+		Films.get(6).click();
 		}	  
 	 return pages.filmContentPage;
 	 } 
@@ -131,23 +147,6 @@ public class HomePage extends InternalPage {
     //wait.until(presenceOfElementLocated(By.cssSelector("div.content h2")));
     return this;
   }
-
-
-public boolean isSearchResultAs(List<Film> filmsList, String searchString) {
-	
-	boolean isAs = true; 
-	// ежели, хоть один фильм не содержит вхождения строки поиска, возвращаем false
-    for (int i = 0; i < filmsList.size(); i++) {
-		
-    	CharSequence cs1 = searchString;
-		if (filmsList.get(i).getTitle().toLowerCase().contains(cs1) == false) 
-			isAs = false;
-		
-	  }
-	
-	return isAs;
-}
-
 
 
 
