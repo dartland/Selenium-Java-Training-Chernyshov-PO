@@ -65,7 +65,7 @@ public class HomePage extends InternalPage {
 	  ArrayList<Film> movieList = new ArrayList<Film>();
 	  //searchField.clear(); searchField.sendKeys(""+Keys.RETURN);
 	  setSearchFieldAndPressEnterButton("");
-	  System.out.println(filmList.size());
+	  //System.out.println(filmList.size());
 	  //setSearchFieldAndPressEnterButton(title);
 	  searchField.clear(); searchField.sendKeys(title+Keys.RETURN);
 	  
@@ -80,7 +80,7 @@ public class HomePage extends InternalPage {
 	  		{break;}
 	  }
 
-	  System.out.println(filmList.size());
+	  //System.out.println(filmList.size());
 	  
       String NameFilm;
 

@@ -1,6 +1,6 @@
 package ru.st.selenium.model;
 
-public class Film {
+public class Film { 
 
 	private String id;
 	private String imdb;
